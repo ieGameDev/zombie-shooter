@@ -9,25 +9,31 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public Vector3 velocityDirection;
 
     private CharacterController _characterController;
+    private PlayerAnimator _playerAnimator;
 
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        _playerAnimator = GetComponent<PlayerAnimator>();
     }
 
     public void PlayerMove(Vector3 moveDirection)
     {
-        velocityDirection.x = moveDirection.x * _moveSpeed;
-        velocityDirection.z = moveDirection.z * _moveSpeed;
-        _characterController.Move(velocityDirection * Time.deltaTime);
+        _playerAnimator.AnimationDirection(moveDirection);
+
+        Vector3 localMoveDirection = transform.TransformDirection(moveDirection);
+        localMoveDirection *= _moveSpeed;
+
+        _characterController.Move(localMoveDirection * Time.deltaTime);
     }
 
     public void PlayerRotate(Vector3 moveDirection)
     {
-        if (Vector3.Angle(transform.forward, moveDirection) > 0)
+        if (moveDirection != Vector3.zero)
         {
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward, moveDirection, _rotateSpeed, 0);
-            transform.rotation = Quaternion.LookRotation(newDirection);
+            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, _rotateSpeed * Time.deltaTime);
         }
     }
 }
