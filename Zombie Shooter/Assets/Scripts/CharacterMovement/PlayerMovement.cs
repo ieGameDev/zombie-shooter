@@ -11,29 +11,42 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController _characterController;
     private PlayerAnimator _playerAnimator;
 
+    private Vector3 _moveDirection;
+    private Vector3 _rotateDirection;
+
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
         _playerAnimator = GetComponent<PlayerAnimator>();
     }
 
-    public void PlayerMove(Vector3 moveDirection)
+    private void Update()
     {
-        _playerAnimator.AnimationDirection(moveDirection);
-
-        Vector3 localMoveDirection = transform.TransformDirection(moveDirection);
-        localMoveDirection *= _moveSpeed;
-
-        _characterController.Move(localMoveDirection * Time.deltaTime);
+        _playerAnimator.AnimationDirection(_moveDirection, _rotateDirection);
     }
 
-    public void PlayerRotate(Vector3 moveDirection)
+    public void PlayerMove(Vector3 moveDirection)
     {
-        if (moveDirection != Vector3.zero)
-        {
-            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+        _moveDirection = moveDirection;
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, _rotateSpeed * Time.deltaTime);
+        velocityDirection.x = moveDirection.x * _moveSpeed;
+        velocityDirection.z = moveDirection.z * _moveSpeed;
+        _characterController.Move(velocityDirection * Time.deltaTime);
+
+        //Vector3 localMoveDirection = transform.TransformDirection(moveDirection);
+        //localMoveDirection *= _moveSpeed;
+
+        //_characterController.Move(localMoveDirection * Time.deltaTime);
+    }
+
+    public void PlayerRotate(Vector3 rotateDirection)
+    {
+        _rotateDirection = rotateDirection;
+
+        if (Vector3.Angle(transform.forward, rotateDirection) > 0)
+        {
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, rotateDirection, _rotateSpeed, 0);
+            transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class MobileMovement : JoystickHandler
 {
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private Transform _playerTransform;
 
     private void Update()
     {
