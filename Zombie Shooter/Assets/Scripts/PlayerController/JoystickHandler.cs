@@ -37,9 +37,7 @@ public abstract class JoystickHandler : MonoBehaviour, IDragHandler, IPointerDow
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-    }
+    public void OnPointerDown(PointerEventData eventData) { }
 
     public void OnPointerUp(PointerEventData eventData)
     {

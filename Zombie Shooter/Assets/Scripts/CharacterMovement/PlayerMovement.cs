@@ -32,11 +32,6 @@ public class PlayerMovement : MonoBehaviour
         velocityDirection.x = moveDirection.x * _moveSpeed;
         velocityDirection.z = moveDirection.z * _moveSpeed;
         _characterController.Move(velocityDirection * Time.deltaTime);
-
-        //Vector3 localMoveDirection = transform.TransformDirection(moveDirection);
-        //localMoveDirection *= _moveSpeed;
-
-        //_characterController.Move(localMoveDirection * Time.deltaTime);
     }
 
     public void PlayerRotate(Vector3 rotateDirection)
