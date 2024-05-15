@@ -48,6 +48,6 @@ namespace Scripts.Player
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, rotateDirection, _rotateSpeed, 0);
                 transform.rotation = Quaternion.LookRotation(newDirection);
             }
-        }
+        }        
     }
 }

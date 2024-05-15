@@ -19,9 +19,8 @@ namespace Scripts.Infrastructure
             _sceneLoader.Load(Initial, onLoaded: EnterLoadLevel);
         }
 
-        private void EnterLoadLevel()
-        {            
-        }
+        private void EnterLoadLevel() => 
+            _stateMachine.Enter<LoadLevelState, string>("Main");
 
         private void RegisterServices()
         {            

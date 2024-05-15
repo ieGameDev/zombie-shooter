@@ -13,7 +13,7 @@ namespace Scripts.Services.Input
         private RectTransform _backgroundRectTransform;
         private RectTransform _joystickRectTransform;
 
-        [SerializeField] protected PlayerMovement _playerMovement;
+        protected PlayerMovement _playerMovement;
 
         protected Vector2 _inputVector;
 
@@ -21,6 +21,8 @@ namespace Scripts.Services.Input
         {
             _backgroundRectTransform = _joystickBackground.rectTransform;
             _joystickRectTransform = _joystick.rectTransform;
+
+            _playerMovement = FindObjectOfType<PlayerMovement>();
         }
 
         public void OnDrag(PointerEventData eventData)
