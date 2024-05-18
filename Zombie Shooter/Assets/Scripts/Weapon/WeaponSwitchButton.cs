@@ -6,7 +6,7 @@ public class WeaponSwitchButton : MonoBehaviour
     public WeaponType WeaponType;
     private SwitchWeapon _switchWeapon;
 
-    void Start()
+    private void Start()
     {
         Button button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
@@ -14,7 +14,7 @@ public class WeaponSwitchButton : MonoBehaviour
         _switchWeapon = FindObjectOfType<SwitchWeapon>();
     }
 
-    void OnClick()
+    private void OnClick()
     {
         _switchWeapon.CurrentWeaponType = WeaponType;
         _switchWeapon.ChooseWeapon();

@@ -1,20 +1,22 @@
-﻿using Scripts.Logic;
+﻿using Scripts.Infrastructure.Factory;
+using Scripts.Infrastructure.Services;
+using Scripts.Logic;
 using System;
 using System.Collections.Generic;
 
-namespace Scripts.Infrastructure
+namespace Scripts.Infrastructure.States
 {
     public class GameStateMachine
     {
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
-        public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain curtain)
+        public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain curtain, AllServices services)
         {
             _states = new Dictionary<Type, IExitableState>
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain),
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, services.Single<IGameFactory>()),
                 [typeof(GameLoopState)] = new GameLoopState(this),
             };
         }
@@ -24,7 +26,7 @@ namespace Scripts.Infrastructure
             IState state = ChangeState<TState>();
 
             state.Enter();
-        }        
+        }
 
         public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedState<TPayload>
         {
@@ -43,7 +45,7 @@ namespace Scripts.Infrastructure
             return state;
         }
 
-        private TState GetState<TState>() where TState : class, IExitableState => 
+        private TState GetState<TState>() where TState : class, IExitableState =>
             _states[typeof(TState)] as TState;
     }
 }

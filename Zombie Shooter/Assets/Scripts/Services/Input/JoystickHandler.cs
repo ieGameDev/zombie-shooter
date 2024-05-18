@@ -14,14 +14,12 @@ namespace Scripts.Services.Input
         private RectTransform _joystickRectTransform;
 
         protected PlayerMovement _playerMovement;
-
         protected Vector2 _inputVector;
 
         private void Start()
         {
             _backgroundRectTransform = _joystickBackground.rectTransform;
             _joystickRectTransform = _joystick.rectTransform;
-
             _playerMovement = FindObjectOfType<PlayerMovement>();
         }
 
@@ -44,7 +42,9 @@ namespace Scripts.Services.Input
             }
         }
 
-        public void OnPointerDown(PointerEventData eventData) { }
+        public void OnPointerDown(PointerEventData eventData)
+        {
+        }
 
         public void OnPointerUp(PointerEventData eventData)
         {
