@@ -82,6 +82,7 @@ MonoBehaviour:
   _moveSpeed: 7
   _rotateSpeed: 7
   velocityDirection: {x: 0, y: 0, z: 0}
+  _characterController: {fileID: 7951432051994968905}
 --- !u!114 &7951432051994968900
 MonoBehaviour:
   m_ObjectHideFlags: 0

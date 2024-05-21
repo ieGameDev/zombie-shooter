@@ -18,10 +18,7 @@ namespace Scripts.Logic
             _curtain.alpha = 1;
         }
 
-        public void Hide()
-        {
-            StartCoroutine(FadeIn());
-        }
+        public void Hide() => StartCoroutine(FadeIn());
 
         private IEnumerator FadeIn()
         {

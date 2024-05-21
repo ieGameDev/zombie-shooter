@@ -1,16 +1,19 @@
+using Scripts.Data;
+using Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Scripts.Player
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour, ISavedProgress
     {
         [Header("Character Movement Settings")]
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _rotateSpeed;
         [HideInInspector] public Vector3 velocityDirection;
 
-        private CharacterController _characterController;
+        [SerializeField] private CharacterController _characterController;
         private PlayerAnimator _playerAnimator;
 
         private Vector3 _moveDirection;
@@ -18,7 +21,6 @@ namespace Scripts.Player
 
         private void Start()
         {
-            _characterController = GetComponent<CharacterController>();
             _playerAnimator = GetComponent<PlayerAnimator>();
         }
 
@@ -48,6 +50,31 @@ namespace Scripts.Player
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, rotateDirection, _rotateSpeed, 0);
                 transform.rotation = Quaternion.LookRotation(newDirection);
             }
-        }        
+        }
+
+        public void UpdateProgress(PlayerProgress progress) =>
+            progress.WorldData.PositionOnLevel = new PositionOnLevel(CurrentLevel(), transform.position.AsVectorData());
+
+        public void LoadProgress(PlayerProgress progress)
+        {
+            if (CurrentLevel() == progress.WorldData.PositionOnLevel.Level)
+            {
+                Vector3Data savedPosition = progress.WorldData.PositionOnLevel.Position;
+                if (savedPosition != null)
+                {
+                    Warp(savedPosition);
+                }
+            }
+        }
+
+        private void Warp(Vector3Data savedPosition)
+        {
+            _characterController.enabled = false;
+            transform.position = savedPosition.AsUnityVector().AddY(_characterController.height);
+            _characterController.enabled = true;
+        }
+
+        private static string CurrentLevel() => 
+            SceneManager.GetActiveScene().name;
     }
 }

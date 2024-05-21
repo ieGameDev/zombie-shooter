@@ -1,7 +1,7 @@
 using Scripts.Player;
 using UnityEngine;
 
-namespace Scripts.Services.Input
+namespace Scripts.Infrastructure.Services.Input
 {
     public class DesktopMovementInput : MonoBehaviour
     {
