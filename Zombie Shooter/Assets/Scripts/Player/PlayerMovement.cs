@@ -26,7 +26,7 @@ namespace Scripts.Player
 
         private void Update()
         {
-            _playerAnimator.AnimationDirection(_moveDirection, _rotateDirection);
+            _playerAnimator.Move(_moveDirection, _rotateDirection);
         }
 
         public void PlayerMove(Vector3 moveDirection)

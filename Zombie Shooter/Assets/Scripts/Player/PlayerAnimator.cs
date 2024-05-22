@@ -4,6 +4,9 @@ public class PlayerAnimator : MonoBehaviour
 {
     private const string Vertical = "Vertical";
     private const string Horizontal = "Horizontal";
+
+    private static readonly int IsMoving = Animator.StringToHash("Run");
+
     private Animator _animator;
 
     private void Start()
@@ -11,7 +14,19 @@ public class PlayerAnimator : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
     }
 
-    public void AnimationDirection(Vector3 moveDirection, Vector3 rotateDirection)
+    public void Move(Vector3 moveDirection, Vector3 rotateDirection)
+    {
+        ChangeDirection(moveDirection, rotateDirection);
+        Run(moveDirection);
+    }
+
+    private void Run(Vector3 moveDirection)
+    {
+        bool isMoving = moveDirection.x != 0 || moveDirection.z != 0;
+        _animator.SetBool(IsMoving, isMoving);
+    }
+
+    private void ChangeDirection(Vector3 moveDirection, Vector3 rotateDirection)
     {
         float forwardAngle = Vector3.SignedAngle(Vector3.forward, moveDirection, Vector3.up);
         float rotationAngle = Vector3.SignedAngle(Vector3.forward, rotateDirection, Vector3.up);
@@ -26,13 +41,5 @@ public class PlayerAnimator : MonoBehaviour
 
         _animator.SetFloat(Vertical, vertical * 1.5f);
         _animator.SetFloat(Horizontal, horizontal * 1.5f);
-
-        Run(moveDirection);
-    }
-
-    private void Run(Vector3 moveDirection)
-    {
-        bool isMoving = moveDirection.x != 0 || moveDirection.z != 0;
-        _animator.SetBool("Run", isMoving);
     }
 }
