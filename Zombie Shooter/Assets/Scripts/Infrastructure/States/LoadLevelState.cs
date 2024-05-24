@@ -3,6 +3,8 @@ using Scripts.CameraLogic;
 using Scripts.Logic;
 using UnityEngine;
 using Scripts.Infrastructure.Services.PersistentProgress;
+using Scripts.UI;
+using Scripts.Player;
 
 namespace Scripts.Infrastructure.States
 {
@@ -12,7 +14,7 @@ namespace Scripts.Infrastructure.States
 
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
-        private readonly LoadingCurtain _curtain;
+        private readonly LoadingCurtain _loadingCurtain;
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
 
@@ -20,21 +22,21 @@ namespace Scripts.Infrastructure.States
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
-            _curtain = curtain;
+            _loadingCurtain = curtain;
             _gameFactory = gameFactory;
             _progressService = progressService;
         }
 
         public void Enter(string sceneName)
         {
-            _curtain.Show();
+            _loadingCurtain.Show();
             _gameFactory.Cleanup();
             _sceneLoader.Load(sceneName, OnLoaded);
         }
 
         public void Exit()
         {
-            _curtain.Hide();
+            _loadingCurtain.Hide();
         }
 
         private void OnLoaded()
@@ -47,26 +49,33 @@ namespace Scripts.Infrastructure.States
 
         private void InformProgressReaders()
         {
-            foreach (var progressReader in _gameFactory.ProgressReaders)
-            {
+            foreach (ISavedProgressReader progressReader in _gameFactory.ProgressReaders)
                 progressReader.LoadProgress(_progressService.Progress);
-            }
         }
 
         private void InitGameWorld()
         {
-            GameObject player = _gameFactory.CreatePlayer(GameObject.FindWithTag(InitialPointTag));
+            GameObject player = InitPlayer();
 
-            _gameFactory.CreateHud();
-
+            InitHud(player);
             CameraFollow(player);
+        }
+
+        private GameObject InitPlayer() => 
+            _gameFactory.CreatePlayer(GameObject.FindWithTag(InitialPointTag));
+
+        private void InitHud(GameObject player)
+        {
+            GameObject hud = _gameFactory.CreateHud();
+
+            hud.GetComponentInChildren<ActorUI>().Construct(player.GetComponent<PlayerHealth>());
         }
 
         private void CameraFollow(GameObject player)
         {
             Camera.main
-            .GetComponent<CameraFollow>()
-            .Follow(player);
+                .GetComponent<CameraFollow>()
+                .Follow(player);
         }
     }
 }

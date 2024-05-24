@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7951432051994968903}
   - component: {fileID: 7951432051994968900}
   - component: {fileID: 1857900188834658125}
+  - component: {fileID: -2377309532999737625}
   m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
@@ -142,6 +143,19 @@ MonoBehaviour:
   _animator: {fileID: 7951432052550778906}
   _pistol: {fileID: 8556141437327376280}
   _rifle: {fileID: 1189055973232313151}
+--- !u!114 &-2377309532999737625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7951432051994968904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4beef06772ce24b9b4d45e34203359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerAnimator: {fileID: 7951432051994968901}
 --- !u!1001 &7951432053407026125
 PrefabInstance:
   m_ObjectHideFlags: 0

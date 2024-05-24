@@ -15,8 +15,8 @@ namespace Scripts.Infrastructure.Factory
         event Action PlayerCreated;
 
         GameObject CreatePlayer(GameObject initialPoint);
+        GameObject CreateHud();
 
-        void CreateHud();
         void Cleanup();
     }
 }

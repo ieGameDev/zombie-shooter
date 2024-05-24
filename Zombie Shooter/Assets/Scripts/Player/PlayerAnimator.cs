@@ -6,6 +6,7 @@ public class PlayerAnimator : MonoBehaviour
     private const string Horizontal = "Horizontal";
 
     private static readonly int IsMoving = Animator.StringToHash("Run");
+    private static readonly int Hit = Animator.StringToHash("Hit");
 
     private Animator _animator;
 
@@ -19,6 +20,9 @@ public class PlayerAnimator : MonoBehaviour
         ChangeDirection(moveDirection, rotateDirection);
         Run(moveDirection);
     }
+
+    public void PlayHit() =>
+            _animator.SetTrigger(Hit);
 
     private void Run(Vector3 moveDirection)
     {

@@ -29,7 +29,7 @@ namespace Scripts.Infrastructure.Factory
             return PlayerGameObject;
         }
 
-        public void CreateHud() =>
+        public GameObject CreateHud() =>
             InstantiateRegistered(AssetPath.HudPath);
 
         public void Cleanup()

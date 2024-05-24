@@ -1,5 +1,6 @@
 ﻿using Scripts.Infrastructure.Factory;
 using Scripts.Infrastructure.Services;
+using Scripts.Player;
 using System.Linq;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace Scripts.Enemy
         public float AttackCooldown = 3f;
         public float Cleavage = 0.5f;
         public float EffectiveDistance = 0.5f;
+        public float Damage = 20f;
 
         private IGameFactory _factory;
         private Transform _playerTransform;
@@ -44,6 +46,7 @@ namespace Scripts.Enemy
             if (Hit(out Collider hit))
             {
                 PhysicsDebug.DrawDebug(StartPoint(), Cleavage, 1f);
+                hit.transform.GetComponent<PlayerHealth>().TakeDamage(Damage);
             }
         }
 
