@@ -13,7 +13,7 @@ namespace Scripts.Enemy
 
         private readonly int _idleStateHash = Animator.StringToHash("idle");
         private readonly int _attackStateHash = Animator.StringToHash("attack");
-        private readonly int _runningStateHash = Animator.StringToHash("move");
+        private readonly int _runningStateHash = Animator.StringToHash("run");
         private readonly int _deathStateHash = Animator.StringToHash("die");
 
         private Animator _animator;
