@@ -21,7 +21,7 @@ namespace Scripts.UI
 
         public void UpdateHpBar()
         {
-            HpBar.SetValue(_playerHealth.Current, _playerHealth.Max);
+            HpBar.SetValue(_playerHealth.CurrentHealth, _playerHealth.MaxHealth);
         }
     }
 }

@@ -475,9 +475,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6834860081256829829}
-  AttackCooldown: 3
+  AttackCooldown: 0.5
   Cleavage: 0.5
   EffectiveDistance: 0.5
+  Damage: 20
 --- !u!114 &1101366254458938750
 MonoBehaviour:
   m_ObjectHideFlags: 0

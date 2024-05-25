@@ -9,8 +9,8 @@ namespace Scripts.Player
     public class PlayerMovement : MonoBehaviour, ISavedProgress
     {
         [Header("Character Movement Settings")]
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _rotateSpeed;
+        public float MoveSpeed;
+        public float RotateSpeed;
         [HideInInspector] public Vector3 velocityDirection;
 
         [SerializeField] private CharacterController _characterController;
@@ -33,8 +33,8 @@ namespace Scripts.Player
         {
             _moveDirection = moveDirection;
 
-            velocityDirection.x = moveDirection.x * _moveSpeed;
-            velocityDirection.z = moveDirection.z * _moveSpeed;
+            velocityDirection.x = moveDirection.x * MoveSpeed;
+            velocityDirection.z = moveDirection.z * MoveSpeed;
 
             velocityDirection += Physics.gravity;
 
@@ -47,7 +47,7 @@ namespace Scripts.Player
 
             if (Vector3.Angle(transform.forward, rotateDirection) > 0)
             {
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, rotateDirection, _rotateSpeed, 0);
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, rotateDirection, RotateSpeed, 0);
                 transform.rotation = Quaternion.LookRotation(newDirection);
             }
         }

@@ -13,7 +13,7 @@ namespace Scripts.Player
 
         public Action HealthChanged;
 
-        public float Current
+        public float CurrentHealth
         {
             get => _state.CurrentHP;
             set
@@ -26,7 +26,7 @@ namespace Scripts.Player
             }
         }
 
-        public float Max
+        public float MaxHealth
         {
             get => _state.MaxHP;
             set => _state.MaxHP = value;
@@ -40,19 +40,19 @@ namespace Scripts.Player
 
         public void UpdateProgress(PlayerProgress progress)
         {
-            progress.PlayerState.CurrentHP = Current;
-            progress.PlayerState.MaxHP = Max;
+            progress.PlayerState.CurrentHP = CurrentHealth;
+            progress.PlayerState.MaxHP = MaxHealth;
         }
 
         public void TakeDamage(float damage)
         {
-            if (Current <= 0)
+            if (CurrentHealth <= 0)
                 return;
 
-            Current -= damage;
+            CurrentHealth -= damage;
             _playerAnimator.PlayHit();
 
-            Debug.Log(Current);
+            Debug.Log(CurrentHealth);
         }
     }
 }

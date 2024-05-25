@@ -7,6 +7,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private static readonly int IsMoving = Animator.StringToHash("Run");
     private static readonly int Hit = Animator.StringToHash("Hit");
+    private static readonly int Die = Animator.StringToHash("Die");
 
     private Animator _animator;
 
@@ -22,7 +23,10 @@ public class PlayerAnimator : MonoBehaviour
     }
 
     public void PlayHit() =>
-            _animator.SetTrigger(Hit);
+        _animator.SetTrigger(Hit);
+
+    public void PlayerDeath() =>
+        _animator.SetTrigger(Die);
 
     private void Run(Vector3 moveDirection)
     {

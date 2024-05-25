@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7951432051994968900}
   - component: {fileID: 1857900188834658125}
   - component: {fileID: -2377309532999737625}
+  - component: {fileID: -8375331980650725379}
   m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
@@ -111,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 769aa7058c0b19e479015965a014ccba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 7
-  _rotateSpeed: 7
+  MoveSpeed: 7
+  RotateSpeed: 7
   velocityDirection: {x: 0, y: 0, z: 0}
   _characterController: {fileID: 7951432051994968905}
 --- !u!114 &7951432051994968900
@@ -156,6 +157,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAnimator: {fileID: 7951432051994968901}
+--- !u!114 &-8375331980650725379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7951432051994968904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e816bd65b6c1e4f4aa73b26c59ea8ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHealth: {fileID: -2377309532999737625}
+  PlayerMovement: {fileID: 7951432051994968903}
+  PlayerAnimator: {fileID: 7951432051994968901}
 --- !u!1001 &7951432053407026125
 PrefabInstance:
   m_ObjectHideFlags: 0
