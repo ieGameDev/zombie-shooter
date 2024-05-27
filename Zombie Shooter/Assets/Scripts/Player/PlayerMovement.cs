@@ -60,10 +60,9 @@ namespace Scripts.Player
             if (CurrentLevel() == progress.WorldData.PositionOnLevel.Level)
             {
                 Vector3Data savedPosition = progress.WorldData.PositionOnLevel.Position;
+
                 if (savedPosition != null)
-                {
                     Warp(savedPosition);
-                }
             }
         }
 
@@ -74,7 +73,7 @@ namespace Scripts.Player
             _characterController.enabled = true;
         }
 
-        private static string CurrentLevel() => 
+        private static string CurrentLevel() =>
             SceneManager.GetActiveScene().name;
     }
 }

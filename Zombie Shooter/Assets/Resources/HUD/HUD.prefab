@@ -951,6 +951,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joystickBackground: {fileID: 6727170072483866241}
   _joystick: {fileID: 6727170070675080475}
+  _switchWeapon: {fileID: 1857900188834658125, guid: 3bf12d7621544a3468027d5ebdbe346d,
+    type: 3}
 --- !u!1 &6727170072386568600
 GameObject:
   m_ObjectHideFlags: 0
