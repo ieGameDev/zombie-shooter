@@ -96,7 +96,6 @@ Transform:
   - {fileID: 2490312838708715614}
   - {fileID: 2490312838708715608}
   - {fileID: 2490312838708715610}
-  - {fileID: 3328929161920264456}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -112,13 +111,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d995909d5866c4dadf47d8e59a7b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firePoint: {fileID: 4846439582108434373}
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 32768
-  _shootsInSeconds: 10
-  _bulletSpeed: 50
-  _bullet: {fileID: 3071959899502092010, guid: 307debf64db583d4fb82cf1fb948dc22, type: 3}
+  _damage: 20
+  _impactForce: 50
+  _range: 100
+  _fireRate: 10
+  _bulletPrefab: {fileID: 3071959899502092010, guid: 307debf64db583d4fb82cf1fb948dc22,
+    type: 3}
+  _firePoint: {fileID: 0}
+  _muzzleFlash: {fileID: 0}
 --- !u!1 &2490312838708755560
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,34 +578,3 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000027662863, y: 0.0014001118, z: 0.000027071379}
     m_Extent: {x: 0.00005170802, y: 0.00027563947, z: 0.000107670654}
   m_DirtyAABB: 0
---- !u!1 &4846439582108434373
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3328929161920264456}
-  m_Layer: 0
-  m_Name: FirePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3328929161920264456
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4846439582108434373}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.0046, y: 0.016, z: -0.456}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2490312838708715588}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}

@@ -6,7 +6,7 @@ namespace Scripts.Player.Weapon
     {        
         public void Fire()
         {
-            Debug.Log("Выстрел из автомата");
-        }        
+            
+        }
     }
 }

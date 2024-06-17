@@ -1067,6 +1067,7 @@ Transform:
   - {fileID: 1046446337789844778}
   - {fileID: 1046446337789844776}
   - {fileID: 1046446337789844782}
+  - {fileID: 2570754059321223956}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4734,6 +4735,37 @@ Transform:
   m_Father: {fileID: 1046446337789844820}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6728360770157583677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2570754059321223956}
+  m_Layer: 12
+  m_Name: RifleFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2570754059321223956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728360770157583677}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.213, y: 1.379, z: 0.733}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1046446337789844658}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6653530909632820374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4741,6 +4773,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1046446337789844700}
     m_Modifications:
+    - target: {fileID: 434227601602466110, guid: 4ef79dbd7d4586c4eb1f3aec2ab835ab,
+        type: 3}
+      propertyPath: _firePoint
+      value: 
+      objectReference: {fileID: 2570754059321223956}
     - target: {fileID: 2490312838708715588, guid: 4ef79dbd7d4586c4eb1f3aec2ab835ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -4819,7 +4856,7 @@ PrefabInstance:
     - target: {fileID: 2490312838708755556, guid: 4ef79dbd7d4586c4eb1f3aec2ab835ab,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2490312838708755560, guid: 4ef79dbd7d4586c4eb1f3aec2ab835ab,
         type: 3}
